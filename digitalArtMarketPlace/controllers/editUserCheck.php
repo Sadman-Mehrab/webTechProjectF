@@ -121,7 +121,7 @@
         if($status1 && $status2 && $status3 && $status4){
             echo 'User Updated Successfuly';
             $_SESSION['currentUserName'] = $user['userName'];
-            createNotification($user['userName'], "Your Account Details Were Recently Updated!");
+            createNotification($user['userName'], "Your Account Details Were Recently Updated");
 
             header("location: ../views/user.php");
 

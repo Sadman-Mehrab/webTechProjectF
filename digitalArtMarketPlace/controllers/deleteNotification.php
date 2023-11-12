@@ -3,13 +3,15 @@
     require_once('../models/notificationModel.php');
     $id = $_REQUEST['id'];
 
+
+
     if(!$id){
         echo "Empty ID!";
     }
     else{
         $status = deleteNotification($id);
         if(!$status){
-            echo "Invalid ID!";
+            echo "Notification Delte Fail!";
         }
         else{
             echo "Notification Deleted!";

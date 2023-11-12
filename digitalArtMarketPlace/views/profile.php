@@ -87,6 +87,20 @@
                     
                 </tr>
             </table>
+
+            <table>
+                <tr>
+                    <td>
+                        <?php if($user['userName'] != $currentUserName) { ?>
+                            <a href="message.php?userName=<?php echo $user['userName'] ?>#message">
+                                <button>Send Message</button>
+                            </a>
+                        <?php }?>
+                    </td>
+                    
+
+                </tr>
+            </table>
 </center>
 
 

@@ -91,7 +91,6 @@
                     </td>
                     <td >
                         <img src="<?php echo $user['profilePicture'] ?>" alt="" width="250px"> <br>
-                        <!-- <input type="submit" name="edit" value="Edit"> -->
                     </td>
                     
                 </tr>
@@ -107,13 +106,18 @@
                         <?php }?>
                     </td>
                     <td>
-                        <a href="profile.php?userName=<?php echo $user['userName'] ?>">
-                            <button>Public Profile</button>
+                        <a href="notifications.php">
+                            <button>Notifications</button>
                         </a>
                     </td>
                     <td>
-                        <a href="notifications.php">
-                            <button>Notifications</button>
+                        <a href="inbox.php">
+                            <button>Inbox</button>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="profile.php?userName=<?php echo $user['userName'] ?>">
+                            <button>Public Profile</button>
                         </a>
                     </td>
                     <td>

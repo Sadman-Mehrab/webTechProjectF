@@ -20,8 +20,8 @@
 
         if(updateArtwork($artwork) && updateUser($buyerUserName, $buyerUser) && updateUser($sellerUserName, $sellerUser)){
             echo 'Purchase Successful!';
-            createNotification($buyerUserName, "You Have Purchased Artwork: {$artwork['artworkName']} From {$sellerUserName} For {$artwork['price']} ArtCoin!");
-            createNotification($sellerUserName, "{$buyerUserName} Has Purchased Artwork: {$artwork['artworkName']} From You For {$artwork['price']} ArtCoin!");
+            createNotification($buyerUserName, "You Have Purchased Artwork: {$artwork['artworkName']} From {$sellerUserName} For {$artwork['price']} ArtCoin");
+            createNotification($sellerUserName, "{$buyerUserName} Has Purchased Artwork: {$artwork['artworkName']} From You For {$artwork['price']} ArtCoin");
             header("location: ../views/user.php");
 
         }else{
