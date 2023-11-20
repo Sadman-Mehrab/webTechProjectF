@@ -12,17 +12,7 @@
 
         return $result;
     }
-    function getChatList($userName){
-        $con = getConnection();
-        $sql = "select distinct receiver from Chats where sender='{$userName}' order by time desc";
-        $result = mysqli_query($con, $sql);
-
-        if(!$result) {
-            return NULL;
-        }
-
-        return $result;
-    }
+    
 
     function sendMessage($sender, $receiver, $message){
         $con = getConnection();
@@ -39,5 +29,41 @@
             return false;
         }
 
+    }
+
+    function deleteChatsByUser($userName){
+        $con = getConnection();
+        $sql = "delete from Chats where sender = '{$userName}' or receiver = '{$userName}'";
+        $result = mysqli_query($con, $sql);
+        
+        if(!$result){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    function updateChatSender($userName, $userNameNew){
+        $con = getConnection();
+        
+        $sql = "update Chats set sender = '{$userNameNew}' where sender = '{$userName}'";
+        $result = mysqli_query($con, $sql);
+        if(!$result){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    function updateChatReceiver($userName, $userNameNew){
+        $con = getConnection();
+        
+        $sql = "update Chats set receiver = '{$userNameNew}' where receiver = '{$userName}'";
+        $result = mysqli_query($con, $sql);
+        if(!$result){
+            return false;
+        }else{
+            return true;
+        }
     }
 ?>

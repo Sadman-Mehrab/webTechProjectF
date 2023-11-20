@@ -1,5 +1,6 @@
 <?php
-    session_start();
+    // session_start();
+    require_once('../controllers/sessionCheck.php');
     require_once('../models/chatModel.php');
     require_once('../models/userModel.php');
     
@@ -35,6 +36,22 @@
 </head>
 <body>
     <center>
+        <table width="100%">
+                <tr>
+                    <td colspan="8"><a href=homepage.php><img src="../assets/head.PNG"></a></td>
+                    <td>
+                        <a href="user.php" >
+                            User
+                        </a><br>
+                        <a href="menu.html" >
+                            Menu
+                        </a>
+                    </td>
+                </tr>
+            </table>
+        <table>
+
+
         <h2><?php echo $receiver['userName'] ?></h2>
         
         <p>(This Is The Beginning Of This Conversation)</p>
@@ -78,9 +95,9 @@
                     
                 </table>
                 
-                <form action="../controllers/sendMessage.php" method="post">
+                <form action="../controllers/sendMessage.php" method="post" onsubmit="return validate();">
                     <input hidden type="text" name="receiver" value="<?php echo $receiver['userName']?>">
-                    <input type="text" name="message" value="" id="message">
+                    <input type="text" name="message" id="message" value="" id="message">
                     <input type="submit" name="submit" value="Send">
                 </form>
         
@@ -88,6 +105,19 @@
         </center>
         
         
-    
+    <script>
+
+        function validate(){
+            let message = document.getElementById('message').value;
+
+            if(message == ""){
+                alert("You Cannot Send An Empty Message!");
+                return false;
+            }
+
+            return true;
+        }
+        
+    </script>
 </body>
 </html>

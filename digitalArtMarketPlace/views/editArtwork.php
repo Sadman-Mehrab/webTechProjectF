@@ -1,5 +1,6 @@
 <?php
-    session_start();
+    // session_start();
+    require_once('../controllers/sessionCheck.php');
     require_once('../models/artworkModel.php');
     $userName = $_SESSION['currentUserName'];
     $artId= $_REQUEST['id'];
@@ -17,7 +18,20 @@
     <body>
         <center>
         <form action="../controllers/editArtworkCheck.php?id=<?php echo $artId ?>" method="post" enctype="">
-            <table>
+            <table width="100%">
+                <tr>
+                    <td colspan="8"><a href=homepage.php><img src="../assets/head.PNG"></a></td>
+                    <td>
+                        <a href="user.php" >
+                            User
+                        </a><br>
+                        <a href="menu.html" >
+                            Menu
+                        </a>
+                    </td>
+                </tr>
+            </table>   
+        <table>
             <h2>Edit Artwork</h2>
                 <tr>
                     <td>

@@ -1,5 +1,6 @@
 <?php 
-    session_start();
+    // session_start();
+    require_once('../controllers/sessionCheck.php');
     require_once('../models/artworkModel.php');
     $userName = $_SESSION['currentUserName'];
     $artId = $_REQUEST['id'];
@@ -7,6 +8,7 @@
     $art = mysqli_fetch_assoc($result);
 
     $art['views'] = $art['views']+1;
+    updateArtwork($art) ;
 
     if(!$art) {
         echo "Artwork not found!";
@@ -20,6 +22,23 @@
 
 <body>
     <center>
+        
+        <form method="post" action="" enctype="">
+            <table width="100%">
+                <tr>
+                    <td colspan="8"><a href=homepage.php><img src="../assets/head.PNG"></a></td>
+                    <td>
+                        <a href="user.php" >
+                            User
+                        </a><br>
+                        <a href="menu.html" >
+                            Menu
+                        </a>
+                    </td>
+                </tr>
+            </table>
+        </form> 
+
         <h2>Artwork</h2><br>
         <img src="<?php echo $art['image'] ?>" width="600px"><br>
         <table>

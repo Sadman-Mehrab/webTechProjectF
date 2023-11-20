@@ -43,6 +43,18 @@
         }
     }
 
+    function deleteNotificationsByUser($userName){
+        $con = getConnection();
+        $sql = "delete from Notifications where userName = '{$userName}'";
+        $result = mysqli_query($con, $sql);
+        
+        if(!$result){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
     function updateNotificationUserName($userName, $userNameNew){
         $con = getConnection();
 

@@ -1,7 +1,7 @@
 <?php
-    session_start();
+    // session_start();
+    require_once('sessionCheck.php');
     require_once('../models/chatModel.php');
-
     $sender = $_SESSION['currentUserName'];
     $receiver = $_REQUEST['receiver'];
     $message = $_REQUEST['message'];

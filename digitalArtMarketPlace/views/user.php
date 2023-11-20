@@ -1,5 +1,6 @@
 <?php
-    session_start();
+    // session_start();
+    require_once('../controllers/sessionCheck.php');
     require_once('../models/userModel.php');
     require_once('../models/artworkModel.php');
     $userName = $_SESSION['currentUserName'];
@@ -28,6 +29,22 @@
 </head>
 <body>
     <center>
+    <table width="100%">
+                <tr>
+                    <td colspan="8"><a href=homepage.php><img src="../assets/head.PNG"></a></td>
+                    <td>
+                        <a href="user.php" >
+                            User
+                        </a><br>
+                        <a href="menu.html" >
+                            Menu
+                        </a>
+                    </td>
+                </tr>
+            </table>
+        <table>
+
+
         
         <h2><?php echo $user['userName'] ?></h2>
     </center>
@@ -110,11 +127,7 @@
                             <button>Notifications</button>
                         </a>
                     </td>
-                    <td>
-                        <a href="inbox.php">
-                            <button>Inbox</button>
-                        </a>
-                    </td>
+
                     <td>
                         <a href="profile.php?userName=<?php echo $user['userName'] ?>">
                             <button>Public Profile</button>
