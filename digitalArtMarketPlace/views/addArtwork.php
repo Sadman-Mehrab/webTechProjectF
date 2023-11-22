@@ -29,7 +29,7 @@
 
 
         <h2>Add Artwork</h2>
-    
+        
         <form action="../controllers/addArtworkCheck.php" method="post" enctype="multipart/form-data" onsubmit="return validate();">
             <table>
                 <tr>

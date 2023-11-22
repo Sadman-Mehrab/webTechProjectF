@@ -40,19 +40,45 @@
 
         <h2>Notifications</h2>
         
-        
-            <?php while($notification = mysqli_fetch_assoc($notifications)){ ?>
-                
-                <b><?php echo $notification['description'] ?></b> | <?php echo $notification['time'] ?> | <a href="../controllers/deleteNotification.php?id=<?php echo $notification['id'] ?>">Delete</a>
-                <hr>
-            <?php } ?>
+            <div id="notifications"></div>
                     
                     
                 
-
-        
-        
+     
     </center>
-    
+    <script>
+        function retrieveNotifications(){
+            let xhttp = new XMLHttpRequest();
+            xhttp.open('GET', '../controllers/retrieveNotifications.php', true);
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    let response = this.responseText;
+                    document.getElementById('notifications').innerHTML = response;
+                }
+            }
+
+            xhttp.send();
+        }
+
+        function deleteNotification(event){
+            let notificationId = event.target.id;
+
+            let xhttp = new XMLHttpRequest();
+
+            xhttp.open('POST', '../controllers/deleteNotification.php', true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById('notifications').innerHTML = "";
+                    retrieveNotifications(); 
+
+                }
+            }
+
+            xhttp.send('id=' + notificationId);
+        }
+
+        retrieveNotifications();
+    </script>
 </body>
 </html>
