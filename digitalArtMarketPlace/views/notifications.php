@@ -1,14 +1,6 @@
 <?php
     // session_start();
     require_once('../controllers/sessionCheck.php');
-    require_once('../models/notificationModel.php');
-    $userName = $_SESSION['currentUserName'];
-    $notifications = getUserNotifications($userName);
-
-    
-    
-
-
 
 ?>
 
@@ -18,7 +10,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $userName." Notifications" ?></title>
+    <title>Notifications</title>
+    <link rel="stylesheet" href="../assets/styles/style.css">
 </head>
 <body>
     <center>
@@ -36,49 +29,17 @@
                 </tr>
             </table>
         <table>
-
-
+            
         <h2>Notifications</h2>
         
-            <div id="notifications"></div>
+        <div class="generalText" id="notifications"></div>
                     
                     
                 
      
     </center>
-    <script>
-        function retrieveNotifications(){
-            let xhttp = new XMLHttpRequest();
-            xhttp.open('GET', '../controllers/retrieveNotifications.php', true);
-            xhttp.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200) {
-                    let response = this.responseText;
-                    document.getElementById('notifications').innerHTML = response;
-                }
-            }
-
-            xhttp.send();
-        }
-
-        function deleteNotification(event){
-            let notificationId = event.target.id;
-
-            let xhttp = new XMLHttpRequest();
-
-            xhttp.open('POST', '../controllers/deleteNotification.php', true);
-            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhttp.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById('notifications').innerHTML = "";
-                    retrieveNotifications(); 
-
-                }
-            }
-
-            xhttp.send('id=' + notificationId);
-        }
-
-        retrieveNotifications();
-    </script>
+    <script src="../assets/js/notifications.js"></script>
+    
+    
 </body>
 </html>

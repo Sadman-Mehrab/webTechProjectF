@@ -9,6 +9,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Artwork</title>
+    <link rel="stylesheet" href="../assets/styles/style.css">
 </head>
 <body>
     <center>     
@@ -30,14 +31,17 @@
 
         <h2>Add Artwork</h2>
         
-        <form action="../controllers/addArtworkCheck.php" method="post" enctype="multipart/form-data" onsubmit="return validate();">
-            <table>
-                <tr>
+        <form action="../controllers/addArtworkCheck.php" method="post" enctype="multipart/form-data" onsubmit="return validate()">
+        <div id="imagePreview" hidden >
+            <img class="artwork" id="uploadedImagePreview" src="" alt="" >
+        </div>
+        <table class="generalText">
+            <tr>
                 <td>
                     <b>Image</b> 
                 </td>
                 <td>:
-                <input type="file" accept="image/*" id="uploadedImage" name="uploadedImage">
+                <input type="file" accept="image/*" id="uploadedImage" name="uploadedImage" onchange="showUploadedPicture()">
                 </td>
             </tr>
             <tr>
@@ -73,6 +77,7 @@
                     <input type="radio" name="artworkPurchaseable" id="No" value="No"> No
                 </td>
             </tr>
+            
             <tr>
                 <td>
                     <input type="submit" name= "submit" value="Add Artwork">
@@ -81,46 +86,6 @@
         </table>
     </form>
 </center>
-<script>
-    
-    function validate(){
-        
-            let artworkName = document.getElementById('artworkName').value;
-            let artworkPrice = document.getElementById('artworkPrice').value;
-            let artworkDescription = document.getElementById('artworkDescription').value;
-            let isYesSelected = document.getElementById('Yes').checked;
-            let isNoSelected = document.getElementById('No').checked;
-            let uploadedImage = document.getElementById('uploadedImage');
-            
-            if(uploadedImage.files.length == 0){
-                alert("Please Select a Picture!");
-                return false;
-            }
-            
-            if(artworkName == ""){
-                alert("Artwork Name Cannot Be Empty!");
-                return false;
-            }
-
-            if(artworkDescription == ""){
-                alert("Artwork Description Cannot Be Empty!");
-                return false;
-            }
-
-            if(artworkPrice <= 0){
-                alert("Artwork Price Must Be Greater Than 0!");
-                return false;
-            }
-
-            if(!isYesSelected && !isNoSelected){
-                alert("Must Select: Purchaseable or Not Purchaseable!");
-                return false;
-            }
-            
-            return true;   
-
-        }
-            
-    </script>
+<script src="../assets/js/addArtwork.js"></script>
 </body>
 </html>

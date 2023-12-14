@@ -1,28 +1,29 @@
 <html>
-    <header>
+    <head>
         <title>Title</title>
-    </header>
+        <script src="../assets/JS/search.js"></script>
+        <link rel="stylesheet" href="../assets/styles/rafid.css"/>
+    </head>
     <body>
+        <div id='topbarleft'>
+            <a href=homepage.html><img src="../assets/home.png"></a>
+            </div>
+
+            <div id='topbarright'>
+            <a href="user.php" >
+                        User
+                    </a><br>
+                    <div onclick='menuFunc()'>
+                        <p id='menu'>Menu</p></div>
+                    </div>
         <center>
-            <table width="100%">
-                <tr>
-                    <td colspan="8"><a href=homepage.php><img src="../assets/head.PNG"></a></td>
-                    <td>
-                        <a href="user.php" >
-                            User
-                        </a><br>
-                        <a href="menu.html" >
-                            Menu
-                        </a>
-                    </td>
-                </tr>
-            </table>
         <table>
-            Search by User name:
-            <form method="post" action="../controllers/searchCheck.php">
-                <input type="text" name="userName" value="">
-                <input type="submit" name="submit" value="search">
+            Search by User Name:
+            <form method="post">
+                <input type="text" id='term' name="userName" value="">
+                <input type="button" id="button" name = "button" value = "Search" onclick="searchfunc()">
             </form>
+            <table id='result'></table>
         </center>
     </body>
 </html>

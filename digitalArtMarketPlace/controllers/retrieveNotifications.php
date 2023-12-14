@@ -5,8 +5,11 @@
     $userName = $_SESSION['currentUserName'];
     $notifications = getUserNotifications($userName);
 
+    $notificationsResults = [];
+
     while($notification = mysqli_fetch_assoc($notifications)){ 
-        echo "<b> {$notification['description']} </b> | {$notification['time']}  | <button id='{$notification['id']}' onclick='deleteNotification(event)'>Delete</button> <hr>";
-                    
+        array_push($notificationsResults, $notification);
     }
+
+    echo json_encode($notificationsResults);
 ?>

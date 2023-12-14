@@ -6,11 +6,11 @@
     $currentUserName = $_SESSION['currentUserName'];
     
 
-    $artworkName = $_REQUEST['artworkName'];
-    $description = $_REQUEST['description'];
-    $price = $_REQUEST['price'];
-    $purchaseAble = $_REQUEST['purchaseAble'];
-    $id = $_REQUEST['id'];
+    $artworkName = $_POST['artworkName'];
+    $description = $_POST['description'];
+    $price = $_POST['price'];
+    $purchaseAble = $_POST['purchaseAble'];
+    $id = $_POST['id'];
     $artwork = getArtwork($id);
 
     if($artworkName == ''){
@@ -30,14 +30,9 @@
         return;
     }
 
-    $artwork['artworkName']= $artworkName;
-    $artwork['description']= $description;
-    $artwork['price']= $price; 
-    $artwork['purchaseAble']= $purchaseAble;
-
-    $up = updateArtwork($artwork);
+    $up = editArtwork($artworkName, $description, $price, $purchaseAble, $id);
     if($up == True) {
-        echo 'Artwork has been Updated!';
+        echo "Artwork has been Updated!";
     }
 
 
